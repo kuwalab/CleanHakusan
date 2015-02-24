@@ -14,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -36,7 +37,11 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onResponse(JSONObject response) {
                     // JSONObjectのパース、List、Viewへの追加等
-                    Log.i("#####", response.toString());
+                    try {
+                        Log.i("#####", response.getString("version"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             },
             new Response.ErrorListener() {
