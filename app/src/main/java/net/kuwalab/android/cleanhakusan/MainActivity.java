@@ -1,6 +1,7 @@
 package net.kuwalab.android.cleanhakusan;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -28,6 +29,9 @@ public class MainActivity extends ActionBarActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+
+        FragmentManager manager = getSupportFragmentManager();
+        MainFragment mainFragment = (MainFragment) manager.findFragmentById(R.id.mainFragment);
 
         String url = "https://cleanhakusan.herokuapp.com/api/version";
 
