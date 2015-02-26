@@ -2,11 +2,11 @@
  <!-- 参考 http://qiita.com/konifar/items/cf6a5226828be9c6a5a2 -->
  <!-- Base application theme. -->
  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-  <item name="colorPrimary">#2196f3</item>
-  <item name="colorPrimaryDark">#1976d2</item>
-  <item name="colorAccent">#fd7d18</item>
+  <item name="colorPrimary">@color/primary</item>
+  <item name="colorPrimaryDark">@color/primary_dark</item>
+  <item name="colorAccent">@color/accent</item>
   <!-- ToolBarのタイトルテキスト色 -->
-  <item name="android:textColorPrimary">#ffffff</item>
+  <item name="android:textColorPrimary">@android:color/white</item>
   <!-- ToolBarのオプションメニューのOverflowアイコンの色 -->
   <!--
   <item name="android:textColorSecondary">#ffffff</item>
