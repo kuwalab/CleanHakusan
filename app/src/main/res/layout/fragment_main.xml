@@ -27,8 +27,7 @@
   <TextView
    android:layout_width="wrap_content"
    android:layout_height="wrap_content"
-   android:text="@string/hello_world"
-   android:textColor="@color/abc_background_cache_hint_selector_material_light" />
+   android:text="@string/hello_world" />
 
   <CheckBox
    android:id="@+id/checkbox"
