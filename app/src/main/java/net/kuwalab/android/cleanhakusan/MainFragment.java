@@ -8,14 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 
 
 public class MainFragment extends Fragment {
+    private RequestQueue requestQueue;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TestTask testTask = new TestTask(getActivity());
-        testTask.execute();
+        requestQueue = Volley.newRequestQueue(getActivity());
+
+        VersionAsyncTask versionAsyncTask = new VersionAsyncTask(getActivity(), requestQueue);
+        versionAsyncTask.execute();
     }
 
     @Override

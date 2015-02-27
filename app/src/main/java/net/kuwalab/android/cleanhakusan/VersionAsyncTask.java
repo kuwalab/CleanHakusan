@@ -3,30 +3,28 @@ package net.kuwalab.android.cleanhakusan;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
-import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class TestTask extends AsyncTask<Void, Void, Void> {
+public class VersionAsyncTask extends AsyncTask<Void, Void, JSONObject> {
     private ProgressDialog waitDialog;
     private Context context;
 
     private RequestQueue requestQueue;
 
 
-    public TestTask(Context context) {
+    public VersionAsyncTask(Context context, RequestQueue requestQueue) {
         this.context = context;
+        this.requestQueue = requestQueue;
     }
 
     @Override
@@ -41,32 +39,23 @@ public class TestTask extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... params) {
-        Log.i("####", "start");
+    protected JSONObject doInBackground(Void... params) {
         try {
             Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        Log.i("####", "start");
         String url = "https://cleanhakusan.herokuapp.com/api/version";
-
-        requestQueue = Volley.newRequestQueue(context);
 
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, future, future);
         requestQueue.add(request);
         requestQueue.start();
+        JSONObject jsonObject = null;
         try {
-            JSONObject result = future.get(20_000, TimeUnit.MILLISECONDS);
-            Log.i("$$$$$$$$$$", result.toString());
-            try {
-                Log.i("###########", result.getString("version"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            jsonObject = future.get(20_000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -75,7 +64,11 @@ public class TestTask extends AsyncTask<Void, Void, Void> {
             e.printStackTrace();
         }
 
+        return jsonObject;
+    }
+
+    @Override
+    protected void onPostExecute(JSONObject jsonObject) {
         waitDialog.dismiss();
-        return null;
     }
 }
