@@ -63,7 +63,6 @@ public class VersionAsyncTask extends AsyncTask<Void, Void, JSONObject> {
         JSONObject jsonObject = null;
         try {
             jsonObject = future.get(20_000, TimeUnit.MILLISECONDS);
-            Log.i("##################", jsonObject.getString("version"));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
