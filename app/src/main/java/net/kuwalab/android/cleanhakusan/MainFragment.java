@@ -6,27 +6,54 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 public class MainFragment extends Fragment {
     private RequestQueue requestQueue;
+    private TextView versionTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestQueue = Volley.newRequestQueue(getActivity());
 
-        VersionAsyncTask versionAsyncTask = new VersionAsyncTask(getActivity(), requestQueue);
-        versionAsyncTask.execute();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View view =  inflater.inflate(R.layout.fragment_main, container, false);
+
+        versionTextView = (TextView) view.findViewById(R.id.versionTextView);
+        requestQueue = Volley.newRequestQueue(getActivity());
+        VersionAsyncTask versionAsyncTask = new VersionAsyncTask(getActivity(), new AsyncTaskListener<Void, JSONObject>() {
+            @Override
+            public void onStartBackgroundTask() {}
+
+            @Override
+            public void onProgressUpdate(Void progress) {}
+
+            @Override
+            public void onEndBackgroundTask(JSONObject result) {
+                try {
+                    versionTextView.setText(result.getString("version"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelledTask() {}
+        }, requestQueue);
+        versionAsyncTask.execute();
+
+        return view;
     }
 
 

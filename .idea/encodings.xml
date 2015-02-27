@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/AsyncTaskListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/MainActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/MainFragment.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/VersionAsyncTask.java" charset="UTF-8" />
