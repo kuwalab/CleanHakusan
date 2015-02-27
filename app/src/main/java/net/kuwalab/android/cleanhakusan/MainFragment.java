@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,11 +29,11 @@ public class MainFragment extends Fragment {
         String url = "https://cleanhakusan.herokuapp.com/api/version";
 
         requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(new JsonObjectRequest(Request.Method.GET, url, null,
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
             new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    // JSONObjectのパース、List、Viewへの追加等
                     try {
                         Log.i("#####", response.getString("version"));
                     } catch (JSONException e) {
@@ -45,7 +46,15 @@ public class MainFragment extends Fragment {
                 public void onErrorResponse(VolleyError error) {
                 }
             }
-        ));
+        );
+        // タイムアウト 10000ミリ秒（10秒）
+        // http://qiita.com/ya1_3241_ba/items/c6a5ebb93afbae3d039a
+        int custom_timeout_ms = 10_000;
+        DefaultRetryPolicy policy = new DefaultRetryPolicy(custom_timeout_ms,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        request.setRetryPolicy(policy);
+        requestQueue.add(request);
     }
 
     @Override
