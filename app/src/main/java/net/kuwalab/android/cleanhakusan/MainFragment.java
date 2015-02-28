@@ -31,7 +31,7 @@ public class MainFragment extends Fragment {
 
         versionTextView = (TextView) view.findViewById(R.id.versionTextView);
         requestQueue = Volley.newRequestQueue(getActivity());
-        VersionAsyncTask versionAsyncTask = new VersionAsyncTask(getActivity(), new AsyncTaskListener<Void, JSONObject>() {
+        JsonAsyncTask jsonAsyncTask = new JsonAsyncTask(getActivity(), new AsyncTaskListener<Void, JSONObject>() {
             @Override
             public void onStartBackgroundTask() {}
 
@@ -53,8 +53,8 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onCancelledTask() {}
-        }, requestQueue);
-        versionAsyncTask.execute();
+        }, new SyncJsonRequest(requestQueue, "https://cleanhakusan.herokuapp.com/api/version"));
+        jsonAsyncTask.execute();
 
         return view;
     }

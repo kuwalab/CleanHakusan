@@ -5,9 +5,10 @@
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/AsyncTaskListener.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/JsonAsyncTask.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/MainActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/MainFragment.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/VersionAsyncTask.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/SyncJsonRequest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_main.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" charset="UTF-8" />
