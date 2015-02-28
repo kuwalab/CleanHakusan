@@ -3,4 +3,6 @@
 
  <string name="hello_world">Hello world!</string>
  <string name="action_settings">Settings</string>
+
+ <string name="task_doing">最新データ確認中</string>
 </resources>

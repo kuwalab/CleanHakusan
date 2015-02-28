@@ -25,7 +25,7 @@ public class JsonAsyncTask extends AsyncTask<Void, Void, JSONObject> {
     protected void onPreExecute() {
         waitDialog = new ProgressDialog(context);
         // プログレスダイアログのメッセージを設定します
-        waitDialog.setMessage("最新データ確認中");
+        waitDialog.setMessage(context.getResources().getString(R.string.task_doing));
         // 円スタイル（くるくる回るタイプ）に設定します
         waitDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         // プログレスダイアログを表示
