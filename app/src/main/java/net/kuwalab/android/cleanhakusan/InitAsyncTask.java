@@ -2,9 +2,11 @@ package net.kuwalab.android.cleanhakusan;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,15 +37,38 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
 
     @Override
     protected TrashInfo doInBackground(Void... params) {
-        int progress = 1;
+        int progress = 0;
 
-        JSONObject jsonObject = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/version");
+        JSONObject jsonVersion = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/version");
+        int serverVersion = -1;
         try {
-            Log.i("#########", jsonObject.getString("version"));
+            if (jsonVersion != null) {
+                try {
+                    Integer.parseInt(jsonVersion.getString("version"));
+                } catch (NumberFormatException e) {
+                    // 何もしない
+                }
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        progress++;
         publishProgress(progress);
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("CLEAN_HAKUSAN", Context.MODE_PRIVATE);
+        int currentVersion = sharedPreferences.getInt("version", -1);
+
+        JSONObject trashList = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/chouList");
+
+        try {
+            if (trashList != null) {
+                JSONArray jsonArray = trashList.getJSONArray("chouList");
+                Log.i("JSONARRAY", jsonArray.toString());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
