@@ -30,7 +30,25 @@ public class MainFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
 
         versionTextView = (TextView) view.findViewById(R.id.versionTextView);
+
         requestQueue = Volley.newRequestQueue(getActivity());
+
+        versionCheck();
+
+        return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    private void versionCheck() {
         JsonAsyncTask jsonAsyncTask = new JsonAsyncTask(getActivity(), new AsyncTaskListener<Void, JSONObject>() {
             @Override
             public void onStartBackgroundTask() {}
@@ -55,18 +73,5 @@ public class MainFragment extends Fragment {
             public void onCancelledTask() {}
         }, new SyncJsonRequest(requestQueue, "http://cleanhakusan.herokuapp.com/api/version"));
         jsonAsyncTask.execute();
-
-        return view;
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 }
