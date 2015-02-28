@@ -3,14 +3,12 @@ package net.kuwalab.android.cleanhakusan;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
@@ -47,12 +45,6 @@ public class VersionAsyncTask extends AsyncTask<Void, Void, JSONObject> {
 
     @Override
     protected JSONObject doInBackground(Void... params) {
-        try {
-            Thread.sleep(3000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         String url = "https://cleanhakusan.herokuapp.com/api/version";
 
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
@@ -68,8 +60,6 @@ public class VersionAsyncTask extends AsyncTask<Void, Void, JSONObject> {
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
             e.printStackTrace();
         }
 

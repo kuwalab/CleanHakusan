@@ -22,7 +22,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -42,7 +41,11 @@ public class MainFragment extends Fragment {
             @Override
             public void onEndBackgroundTask(JSONObject result) {
                 try {
-                    versionTextView.setText(result.getString("version"));
+                    if (result == null) {
+                        versionTextView.setText("ぬるぬる");
+                    } else {
+                        versionTextView.setText(result.getString("version"));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
