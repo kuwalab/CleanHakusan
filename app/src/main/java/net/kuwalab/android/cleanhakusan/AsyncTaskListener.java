@@ -3,7 +3,7 @@ package net.kuwalab.android.cleanhakusan;
 /**
  * プロの力が身につくAndroidプログラミングの教科書 p.326参照
  */
-public interface AsyncTaskListener<T, K> {
+public interface AsyncTaskListener<T, U> {
     /**
      * タスク実行前の処理
      */
@@ -19,7 +19,7 @@ public interface AsyncTaskListener<T, K> {
      * タスクの結果
      * @param result
      */
-    public void onEndBackgroundTask(K result);
+    public void onEndBackgroundTask(U result);
 
     /**
      * タスクのキャンセル
