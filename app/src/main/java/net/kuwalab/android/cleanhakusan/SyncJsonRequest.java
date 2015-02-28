@@ -13,14 +13,12 @@ import java.util.concurrent.TimeoutException;
 
 public class SyncJsonRequest {
     private RequestQueue requestQueue;
-    private String url;
 
-    public SyncJsonRequest(RequestQueue requestQueue, String url) {
+    public SyncJsonRequest(RequestQueue requestQueue) {
         this.requestQueue = requestQueue;
-        this.url = url;
     }
 
-    public JSONObject getJson() {
+    public JSONObject getJson(String url) {
         RequestFuture<JSONObject> future = RequestFuture.newFuture();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, future, future);

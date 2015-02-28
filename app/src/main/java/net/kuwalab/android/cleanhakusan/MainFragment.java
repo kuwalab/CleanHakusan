@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -27,7 +26,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
         versionTextView = (TextView) view.findViewById(R.id.versionTextView);
 
@@ -49,29 +48,23 @@ public class MainFragment extends Fragment {
     }
 
     private void versionCheck() {
-        JsonAsyncTask jsonAsyncTask = new JsonAsyncTask(getActivity(), new AsyncTaskListener<Void, JSONObject>() {
+        InitAsyncTask jsonAsyncTask = new InitAsyncTask(getActivity(), new AsyncTaskListener<Void, TrashInfo>() {
             @Override
-            public void onStartBackgroundTask() {}
-
-            @Override
-            public void onProgressUpdate(Void progress) {}
-
-            @Override
-            public void onEndBackgroundTask(JSONObject result) {
-                try {
-                    if (result == null) {
-                        versionTextView.setText("ぬるぬる");
-                    } else {
-                        versionTextView.setText(result.getString("version"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+            public void onStartBackgroundTask() {
             }
 
             @Override
-            public void onCancelledTask() {}
-        }, new SyncJsonRequest(requestQueue, "http://cleanhakusan.herokuapp.com/api/version"));
+            public void onProgressUpdate(Void progress) {
+            }
+
+            @Override
+            public void onEndBackgroundTask(TrashInfo result) {
+            }
+
+            @Override
+            public void onCancelledTask() {
+            }
+        }, new SyncJsonRequest(requestQueue));
         jsonAsyncTask.execute();
     }
 }
