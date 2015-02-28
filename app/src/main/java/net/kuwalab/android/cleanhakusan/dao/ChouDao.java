@@ -1,5 +1,6 @@
 package net.kuwalab.android.cleanhakusan.dao;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class ChouDao {
@@ -9,7 +10,12 @@ public class ChouDao {
         this.db = db;
     }
 
-    public int count() {
-        return 0;
+    public long count() {
+        String sql = "SELECT COUNT(*) FROM chou";
+        Cursor c = db.rawQuery(sql, null);
+        c.moveToLast();
+        long count = c.getLong(0);
+        c.close();
+        return count;
     }
 }
