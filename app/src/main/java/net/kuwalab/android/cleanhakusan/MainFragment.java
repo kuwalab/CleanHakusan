@@ -53,7 +53,7 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onCancelledTask() {}
-        }, new SyncJsonRequest(requestQueue, "https://cleanhakusan.herokuapp.com/api/version"));
+        }, new SyncJsonRequest(requestQueue, "http://cleanhakusan.herokuapp.com/api/version"));
         jsonAsyncTask.execute();
 
         return view;
