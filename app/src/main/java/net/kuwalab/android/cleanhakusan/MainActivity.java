@@ -44,6 +44,6 @@ public class MainActivity extends ActionBarActivity {
             MainActivity.this.finish();
             return true;
         }
-        return false;
+        return super.onKeyDown(keyCode, event);
     }
 }
