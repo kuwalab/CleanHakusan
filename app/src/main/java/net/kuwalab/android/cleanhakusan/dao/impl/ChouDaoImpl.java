@@ -37,6 +37,11 @@ public class ChouDaoImpl implements ChouDao {
     }
 
     @Override
+    public void deleteAll() {
+        db.delete("chou", null, null);
+    }
+
+    @Override
     @NonNull
     public List<Chou> selectAll() {
         List<Chou> chouList = new ArrayList<>();

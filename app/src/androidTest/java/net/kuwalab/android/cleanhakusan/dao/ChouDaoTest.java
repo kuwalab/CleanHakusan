@@ -52,7 +52,7 @@ public class ChouDaoTest {
     }
 
     @Test
-    public void データの登録のテスト() throws Exception {
+    public void testデータの登録のテスト() throws Exception {
         prepareData();
 
         Chou chou = new Chou();
@@ -70,6 +70,18 @@ public class ChouDaoTest {
         assertThat("IDはインクリメントされている", cursor.getInt(0), is(3));
         assertThat("町名が登録されている", cursor.getString(1), is("テスト町"));
         assertThat("ゴミ回収番号が登録されている", cursor.getInt(2), is(10));
+    }
+
+    @Test
+    public void testデータの全件削除の確認() throws Exception {
+        prepareData();
+
+        ChouDao chouDao = new ChouDaoImpl(db);
+        chouDao.deleteAll();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM chou", null);
+
+        assertThat("レコードが取得できないこと", cursor.moveToNext(), is(false));
     }
 
     @Test

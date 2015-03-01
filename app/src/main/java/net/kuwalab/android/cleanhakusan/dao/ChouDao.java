@@ -7,6 +7,8 @@ import java.util.List;
 public interface ChouDao {
     public void insert(Chou chou);
 
+    public void deleteAll();
+
     public long count();
 
     public List<Chou> selectAll();

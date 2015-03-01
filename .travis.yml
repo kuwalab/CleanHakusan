@@ -1,0 +1,24 @@
+language: android
+android:
+  components:
+    - build-tools-21.1.1
+    - android-21
+    - sys-img-armeabi-v7a-android-21
+    - extra-android-support
+  licenses:
+    - android-sdk-license-5be876d5 # new license!
+    - '.*intel.+'
+
+branches:
+  only:
+    - master
+
+before_install:
+  - android list sdk --no-ui --all --extended
+
+script:
+  - ./gradlew assembleDebug
+
+#after_success:
+#  - 成果物のapkを、特定のURLへアップロードする。
+#  => apkは、常に保存しておけるわけではない。特定の領域に保存する、という対応が必要。
