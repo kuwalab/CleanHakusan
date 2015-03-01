@@ -17,6 +17,6 @@ before_install:
   - android list sdk --no-ui --all --extended
 
 script:
-  - ./gradlew connectedAndroidTest
+  - ./gradlew build connectedCheck
 
 #after_success:
