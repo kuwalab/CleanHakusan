@@ -36,12 +36,17 @@ public class ChouDaoTest {
 
     @Test
     public void count() throws Exception {
-        SQLiteDatabase db = helper.getReadableDatabase();
+        SQLiteDatabase db = helper.getWritableDatabase();
 
         try {
             ChouDao chouDao = new ChouDao(db);
 
-            assertThat(chouDao.count(), is(0L));
+            assertThat("カウントの結果が0件になること", chouDao.count(), is(0L));
+
+            db.execSQL("INSERT INTO chou(chou_name, trash_no) VALUES('テスト', 1)");
+            db.execSQL("INSERT INTO chou(chou_name, trash_no) VALUES('テスト', 1)");
+
+            assertThat("カウントの結果が2件になること", chouDao.count(), is(2L));
         } finally {
             db.close();
         }
