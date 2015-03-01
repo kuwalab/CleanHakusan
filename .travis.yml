@@ -13,9 +13,6 @@ branches:
   only:
     - master
 
-before_install:
-  - android list sdk --no-ui --all --extended
-
 before_script:
   - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
