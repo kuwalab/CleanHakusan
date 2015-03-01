@@ -41,7 +41,7 @@ public class ChouDaoImpl implements ChouDao {
     public List<Chou> selectAll() {
         List<Chou> chouList = new ArrayList<>();
 
-        String sql = "SELECT _id,chouName,trashNo FROM chou";
+        String sql = "SELECT _id,chou_name,trash_no FROM chou";
         Cursor cursor = db.rawQuery(sql, null);
         while (cursor.moveToNext()) {
             chouList.add(toChou(cursor));
