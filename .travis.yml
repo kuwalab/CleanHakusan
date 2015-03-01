@@ -17,7 +17,7 @@ before_install:
   - android list sdk --no-ui --all --extended
 
 script:
-  - ./gradlew assembleDebug
+  - ./gradlew connectedAndroidTest
 
 #after_success:
 #  - 成果物のapkを、特定のURLへアップロードする。
