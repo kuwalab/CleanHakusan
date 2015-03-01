@@ -1,21 +1,13 @@
 package net.kuwalab.android.cleanhakusan.dao;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import net.kuwalab.android.cleanhakusan.entity.Chou;
 
-public class ChouDao {
-    private SQLiteDatabase db;
+import java.util.List;
 
-    public ChouDao(SQLiteDatabase db) {
-        this.db = db;
-    }
+public interface ChouDao {
+    public void insert(Chou chou);
 
-    public long count() {
-        String sql = "SELECT COUNT(*) FROM chou";
-        Cursor c = db.rawQuery(sql, null);
-        c.moveToLast();
-        long count = c.getLong(0);
-        c.close();
-        return count;
-    }
+    public long count();
+
+    public List<Chou> selectAll();
 }

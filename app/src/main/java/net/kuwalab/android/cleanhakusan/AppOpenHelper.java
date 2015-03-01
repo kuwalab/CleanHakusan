@@ -19,7 +19,7 @@ public class AppOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE CHOU(id INTEGER PRIMARY KEY AUTOINCREMENT, chou_name TEXT, trash_no INTEGER)");
+        db.execSQL("CREATE TABLE CHOU(_id INTEGER PRIMARY KEY AUTOINCREMENT, chou_name TEXT, trash_no INTEGER)");
     }
 
     @Override
