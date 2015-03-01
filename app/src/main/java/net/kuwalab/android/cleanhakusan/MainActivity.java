@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.android.volley.RequestQueue;
-
 
 public class MainActivity extends ActionBarActivity {
     @Override
@@ -38,5 +36,14 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            MainActivity.this.finish();
+            return true;
+        }
+        return false;
     }
 }
