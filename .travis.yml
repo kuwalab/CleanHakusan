@@ -20,5 +20,3 @@ script:
   - ./gradlew connectedAndroidTest
 
 #after_success:
-#  - 成果物のapkを、特定のURLへアップロードする。
-#  => apkは、常に保存しておけるわけではない。特定の領域に保存する、という対応が必要。
