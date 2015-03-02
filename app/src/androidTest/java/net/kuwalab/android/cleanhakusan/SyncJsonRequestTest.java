@@ -17,6 +17,15 @@ import static org.junit.Assert.assertThat;
 public class SyncJsonRequestTest {
 
     @Test
+    public void 通信の正常系テスト() {
+        RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
+            new HttpStackJsonResponse()));
+
+        SyncJsonRequest syncJsonRequest = new SyncJsonRequest(requestQueue);
+        assertThat(syncJsonRequest.getJson("").toString(), is("{\"foo\":\"bar\"}"));
+    }
+
+    @Test
     public void test() {
         RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
             new HttpStackServerError()));
