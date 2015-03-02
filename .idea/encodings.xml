@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/HttpStackJsonResponse.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/HttpStackServerError.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/HttpStackTimeOut.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/SyncJsonRequestTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/dao/ChouDaoTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" charset="UTF-8" />

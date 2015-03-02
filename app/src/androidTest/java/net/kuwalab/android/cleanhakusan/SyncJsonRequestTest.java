@@ -26,6 +26,15 @@ public class SyncJsonRequestTest {
     }
 
     @Test
+    public void 通信のタイムアウト() {
+        RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
+            new HttpStackTimeOut()));
+
+        SyncJsonRequest syncJsonRequest = new SyncJsonRequest(requestQueue);
+        assertThat(syncJsonRequest.getJson("http://example.com"), is(nullValue()));
+    }
+
+    @Test
     public void 通信の500エラー() {
         RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
             new HttpStackServerError()));
