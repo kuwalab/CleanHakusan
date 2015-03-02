@@ -17,20 +17,20 @@ import static org.junit.Assert.assertThat;
 public class SyncJsonRequestTest {
 
     @Test
-    public void 通信の正常系テスト() {
+    public void 通信の正常系() {
         RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
             new HttpStackJsonResponse()));
 
         SyncJsonRequest syncJsonRequest = new SyncJsonRequest(requestQueue);
-        assertThat(syncJsonRequest.getJson("").toString(), is("{\"foo\":\"bar\"}"));
+        assertThat(syncJsonRequest.getJson("http://example.com").toString(), is("{\"foo\":\"bar\"}"));
     }
 
     @Test
-    public void test() {
+    public void 通信の500エラー() {
         RequestQueue requestQueue = new RequestQueue(new NoCache(), new BasicNetwork(
             new HttpStackServerError()));
 
         SyncJsonRequest syncJsonRequest = new SyncJsonRequest(requestQueue);
-        assertThat(syncJsonRequest.getJson(""), is(nullValue()));
+        assertThat(syncJsonRequest.getJson("http://example.com"), is(nullValue()));
     }
 }
