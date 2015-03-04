@@ -17,6 +17,9 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
 
     private ProgressDialog progressDialog;
 
+    /** バージョンが取得できない場合 */
+    private static final int VERSION_NOTHING = -1;
+
     public InitAsyncTask(Context context, AsyncTaskListener<Void, TrashInfo> asynctaskListener,
                          SyncJsonRequest syncJsonRequest) {
         this.context = context;
@@ -40,11 +43,11 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
         int progress = 0;
 
         JSONObject jsonVersion = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/version");
-        int serverVersion = -1;
+        int serverVersion = VERSION_NOTHING;
         try {
             if (jsonVersion != null) {
                 try {
-                    Integer.parseInt(jsonVersion.getString("version"));
+                    serverVersion = Integer.parseInt(jsonVersion.getString("version"));
                 } catch (NumberFormatException e) {
                     // 何もしない
                 }
@@ -57,7 +60,7 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
         publishProgress(progress);
 
         SharedPreferences sharedPreferences = context.getSharedPreferences("CLEAN_HAKUSAN", Context.MODE_PRIVATE);
-        int currentVersion = sharedPreferences.getInt("version", -1);
+        int currentVersion = sharedPreferences.getInt("version", VERSION_NOTHING);
 
         JSONObject trashList = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/chouList");
 
