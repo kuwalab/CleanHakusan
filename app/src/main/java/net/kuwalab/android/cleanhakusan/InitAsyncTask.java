@@ -62,7 +62,10 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
         SharedPreferences sharedPreferences = context.getSharedPreferences("CLEAN_HAKUSAN", Context.MODE_PRIVATE);
         int currentVersion = sharedPreferences.getInt("version", VERSION_NOTHING);
 
-        JSONObject trashList = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/chouList");
+        progress++;
+        publishProgress(progress);
+
+        JSONObject trashList = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/trashList");
 
         try {
             if (trashList != null) {
@@ -72,6 +75,9 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        progress++;
+        publishProgress(progress);
 
         return null;
     }
