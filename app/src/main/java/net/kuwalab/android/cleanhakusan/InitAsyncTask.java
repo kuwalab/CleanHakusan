@@ -42,20 +42,7 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
     protected TrashInfo doInBackground(Void... params) {
         int progress = 0;
 
-        JSONObject jsonVersion = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/version");
-        int serverVersion = VERSION_NOTHING;
-        try {
-            if (jsonVersion != null) {
-                try {
-                    serverVersion = Integer.parseInt(jsonVersion.getString("version"));
-                } catch (NumberFormatException e) {
-                    // 何もしない
-                }
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        int serverVersion = getServerVersion()
         progress++;
         publishProgress(progress);
 
@@ -80,6 +67,24 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
         publishProgress(progress);
 
         return null;
+    }
+
+    private int getServerVersion() {
+        JSONObject jsonVersion = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/version");
+        int serverVersion = VERSION_NOTHING;
+        try {
+            if (jsonVersion != null) {
+                try {
+                    serverVersion = Integer.parseInt(jsonVersion.getString("version"));
+                } catch (NumberFormatException e) {
+                    // 何もしない
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return serverVersion;
     }
 
     @Override
