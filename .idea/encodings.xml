@@ -9,6 +9,7 @@
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/HttpStackTimeOut.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/SyncJsonRequestTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/dao/ChouDaoTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/androidTest/java/net/kuwalab/android/cleanhakusan/dao/TrashDaoTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/AppOpenHelper.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/AsyncTaskListener.java" charset="UTF-8" />
@@ -18,7 +19,9 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/SyncJsonRequest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/TrashInfo.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/dao/ChouDao.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/dao/TrashDao.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/dao/impl/ChouDaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/dao/impl/TrashDaoImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/entity/Chou.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/net/kuwalab/android/cleanhakusan/entity/Trash.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" charset="UTF-8" />
