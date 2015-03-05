@@ -42,7 +42,7 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
     protected TrashInfo doInBackground(Void... params) {
         int progress = 0;
 
-        int serverVersion = getServerVersion()
+        int serverVersion = getServerVersion();
         progress++;
         publishProgress(progress);
 
