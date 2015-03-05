@@ -42,15 +42,21 @@ public class InitAsyncTask extends AsyncTask<Void, Integer, TrashInfo> {
     protected TrashInfo doInBackground(Void... params) {
         int progress = 0;
 
+        // サーバーのバージョンの取得
         int serverVersion = getServerVersion();
         progress++;
         publishProgress(progress);
 
+        // ローカルに保存しているバージョンの取得
         SharedPreferences sharedPreferences = context.getSharedPreferences("CLEAN_HAKUSAN", Context.MODE_PRIVATE);
         int currentVersion = sharedPreferences.getInt("version", VERSION_NOTHING);
 
         progress++;
         publishProgress(progress);
+
+        // ローカルのDBにデータが格納されているか確認
+
+        // バージョンが違うか、ローカルにデータが保管されていない場合、データを取得する
 
         JSONObject trashList = syncJsonRequest.getJson("http://cleanhakusan.herokuapp.com/api/trashList");
 
