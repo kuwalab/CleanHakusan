@@ -3,20 +3,18 @@ package net.kuwalab.android.cleanhakusan;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONObject;
-
 
 public class MainFragment extends Fragment {
     private RequestQueue requestQueue;
-    private TextView versionTextView;
+    private AppCompatTextView versionTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,7 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        versionTextView = (TextView) view.findViewById(R.id.versionTextView);
+        versionTextView = (AppCompatTextView) view.findViewById(R.id.versionTextView);
 
         requestQueue = Volley.newRequestQueue(getActivity());
 
